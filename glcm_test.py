@@ -8,11 +8,11 @@ import matplotlib.pyplot as plt
 from skimage.feature import greycomatrix, greycoprops
 from PIL import Image
 
-
 '''
 Angles -    refer to pixel pairs based on angular orientation. 
             Typical are 0, 45, 90, and 135 degrees.
             Also, the paper we intend to implement mention all four of these angles.
+            One or more angles may be passed to the method.
 
 Python Documentation describes this input argument as;
     List of pixel pair angles in radians
@@ -88,15 +88,9 @@ Example:
 
 '''
 prop = greycoprops(glcm, properties[1])
-# stats = []
-# for k in range(n_img):
-#     glcm = greycomatrix(Img[k], distances=DISTANCES, angles=ANGLES, levels=256, symmetric=True, normed=True)
 
-# prop = [np.mean(greycoprops(glcm, properties[i])) for i in range(len(properties))]
-
-# stats.append(prop)
-# stats = np.array(stats)
-result = np.array(glcm).flatten()
-non_zero_result = result[result != 0]
-non_zero_result = np.transpose(non_zero_result)
-print(non_zero_result)
+if __name__ == "__main__":
+    result = np.array(glcm).flatten()
+    non_zero_result = result[result != 0]
+    non_zero_result = np.transpose(non_zero_result)
+    print(non_zero_result)
